@@ -1,3 +1,5 @@
+import { CadastrarClientesComponent } from './pages/clientes/cadastrar-clientes/cadastrar-clientes.component';
+
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { DepositoComponent } from './pages/deposito/deposito.component';
 import { SaqueComponent } from './pages/saque/saque.component';
@@ -11,7 +13,8 @@ const routes: Routes = [
   { path: 'extrato', component:ExtratoComponent},
   { path: 'saque', component:SaqueComponent},
   { path: 'deposito', component:DepositoComponent},
-  { path: 'clientes', component:ClientesComponent}
+  { path: 'clientes', component:ClientesComponent},
+  { path: 'cadastrar-clientes', component:CadastrarClientesComponent}
 ];
 
 @NgModule({

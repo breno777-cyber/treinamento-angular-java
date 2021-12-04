@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, FormControl, ValidationErrors, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deposito.component.css']
 })
 export class DepositoComponent implements OnInit {
-
-  constructor() { }
+  form!: FormGroup
+  constructor(private formb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.creatForm();
+  }
+
+  creatForm(): void {
+    this.form = this.formb.group({
+      Agencia: new FormControl(null,[Validators.required, Validators.maxLength(6)]),
+      Conta: new FormControl(null,[Validators.required, Validators.maxLength(6)],),
+      Valor: new FormControl(null,[Validators.required],),
+    })
+  }
+
+  onSubmit(): void{
+    console.log(this.form.value)
   }
 
 }

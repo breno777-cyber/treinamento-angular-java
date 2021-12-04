@@ -15,6 +15,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { BotaoComponent } from './components/botao/botao.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientesComponent } from './pages/clientes/clientes.component';
+import { CadastrarClientesComponent } from './pages/clientes/cadastrar-clientes/cadastrar-clientes.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
     LabelInputComponent,
     CheckboxComponent,
     BotaoComponent,
-    ClientesComponent
+    ClientesComponent,
+    CadastrarClientesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,24 @@
 <h1>Depósito</h1>
 
-<div class="row">
-  <div class="col">
-    <app-label-input label="Agência"></app-label-input>
+<form [formGroup]="form">
+  <div class="mb-3">
+    <label class="form-label">Agência</label>
+    <input type="number" class="form-control" formControlName="Agencia">
   </div>
-  <div class="col">
-    <app-label-input label="Conta"></app-label-input>
+  <div class="mb-3">
+    <label class="form-label">Conta</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" formControlName="Conta">
   </div>
-  <div class="col">
-    <app-label-input label="Valor"></app-label-input>
+  <div class="md-3">
+    <label for="">Valor</label>
+    <input type="number" class="form-control" formControlName="Valor">
   </div>
-</div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">
+      Aceito os termos de uso.
+    </label>
+  </div>
 
-<app-checkbox checkbox="Aceitos os termos de uso"></app-checkbox>
-<app-botao botao="Enviar"></app-botao>
+  <button type="submit" (click)="onSubmit()" class="btn btn-dark" [disabled]="form.invalid">Enviar</button>
+</form>
