@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-cadastrar-clientes',
@@ -9,7 +9,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class CadastrarClientesComponent implements OnInit {
   form!: FormGroup
-  constructor(private formb:FormBuilder) {} /*instancia */
+  constructor(private formb:FormBuilder) {}
 
   ngOnInit(): void {
     this.creatForm();
@@ -17,17 +17,21 @@ export class CadastrarClientesComponent implements OnInit {
 
   creatForm(): void {
     this.form = this.formb.group({
-      nome: new FormControl(null,[Validators.required]),
+
+      nome: new FormControl(null),
       email: new FormControl(null,[Validators.required, Validators.email]),
-      cpf: new FormControl(null,[Validators.required, Validators.maxLength(14), Validators.minLength(14)]),
-      obs: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
+      cpf: new FormControl(null,[Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
+      observacoes: new FormControl(null),
       ativo: new FormControl(null, [Validators.required]),
     })
   }
 
   onSubmit(): void {
-    alert(`nome: ${this.form?.get('nome')?.value}\ncpf: ${this.form?.get('cpf')?.value}\nemail: ${this.form?.get('email')?.value}\nobs: ${this.form?.get('obs')?.value}\nativo: ${this.form?.get('ativo')?.value}`)
+    alert(`nome: ${this.form?.get('nome')?.value}\ncpf: ${this.form?.get('cpf')?.value}\nemail: ${this.form?.get('email')?.value}\nobservacoes: ${this.form?.get('observacoes')?.value}\nativo: ${this.form?.get('ativo')?.value}`)
+    this.form.reset();
+
   }
+
 
 
 

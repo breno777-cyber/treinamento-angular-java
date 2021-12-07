@@ -16,7 +16,11 @@ import { BotaoComponent } from './components/botao/botao.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { CadastrarClientesComponent } from './pages/clientes/cadastrar-clientes/cadastrar-clientes.component';
-
+import { NgxMaskModule } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ContasComponent } from './pages/contas/contas.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,18 @@ import { CadastrarClientesComponent } from './pages/clientes/cadastrar-clientes/
     CheckboxComponent,
     BotaoComponent,
     ClientesComponent,
-    CadastrarClientesComponent
+    CadastrarClientesComponent,
+    ContasComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
+    NgxCurrencyModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

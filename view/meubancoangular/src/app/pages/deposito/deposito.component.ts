@@ -16,14 +16,16 @@ export class DepositoComponent implements OnInit {
 
   creatForm(): void {
     this.form = this.formb.group({
-      Agencia: new FormControl(null,[Validators.required, Validators.maxLength(6)]),
-      Conta: new FormControl(null,[Validators.required, Validators.maxLength(6)],),
+      Agencia: new FormControl(null,[Validators.required, Validators.maxLength(7)]),
+      Conta: new FormControl(null,[Validators.required, Validators.maxLength(7)],),
       Valor: new FormControl(null,[Validators.required],),
     })
   }
 
   onSubmit(): void{
     console.log(this.form.value)
+
+    this.form.reset();
   }
 
 }

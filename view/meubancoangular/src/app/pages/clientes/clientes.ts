@@ -1,8 +1,8 @@
 /*criaçlão das variaveis */
 export class Clientes{
-  nome!: string
+  cliente!: string
   email!: string
   cpf!: string
-  obs!: string
+  observacoes!: string
   ativo!: boolean
 }
