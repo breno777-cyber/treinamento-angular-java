@@ -6,6 +6,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Component, Input, OnInit } from '@angular/core';
 import { ContasService } from 'src/app/services/contas.service';
 import { multicast } from 'rxjs';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastrar-contas',
@@ -16,7 +18,7 @@ export class CadastrarContasComponent implements OnInit {
   form!: FormGroup
   @Input() dataSource!:ICliente;
 
-  constructor(private formb:FormBuilder, private contaService:ContasService, private clienteService:ClienteService) { }
+  constructor(private formb:FormBuilder, private contaService:ContasService, private clienteService:ClienteService, router: Router) { }
 
   ngOnInit(): void {
     this.creatForm();
@@ -42,7 +44,11 @@ export class CadastrarContasComponent implements OnInit {
     return payLoad
   }
   save():void {
-
+    this.contaService.save(this.mountPayLoad()).subscribe((res) =>{
+      Swal.fire("Conta cadastrada!", "Conta cadastrada com sucesso!","success")
+  },(error) =>{
+    console.log(error)
+    })
   }
 
 
