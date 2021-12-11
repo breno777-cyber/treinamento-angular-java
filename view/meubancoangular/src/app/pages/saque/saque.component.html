@@ -1,24 +1,25 @@
 <h1>Saque</h1>
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="sacar()" >
   <div class="mb-3">
     <label class="form-label">Agência</label>
-    <input type="text" class="form-control" formControlName="Agencia" mask="00000-0">
+    <input type="text" class="form-control" formControlName="agencia">
+    <small class="text-danger mb-2" *ngIf="form.get('agencia')?.errors &&
+      form.get('agencia')?.hasError('required')">Campo obrigatório</small>
   </div>
   <div class="mb-3">
     <label class="form-label">Conta</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="Conta" mask="00000-0">
+    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroConta">
+    <small class="text-danger mb-2" *ngIf="form.get('numeroConta')?.errors &&
+      form.get('numeroConta')?.hasError('required')">Campo obrigatório</small>
   </div>
   <div class="md-3">
     <label for="">Valor</label>
-    <input type="text" class="form-control" formControlName="Valor" currencyMask="">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">
-      Aceito os termos de uso.
-    </label>
+    <input type="text" class="form-control" formControlName="valor">
+    <small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
+      form.get('valor')?.hasError('required')">Campo obrigatório</small>
   </div>
 
-  <button type="submit" (click)="onSubmit()" class="btn btn-dark" [disabled]="form.invalid">Enviar</button>
+
+  <button type="submit" [disabled]="!form.valid" class="btn btn-dark">Sacar</button>
 </form>
 

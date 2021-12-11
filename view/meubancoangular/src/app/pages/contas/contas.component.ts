@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContasComponent implements OnInit {
 
-  contas: IConta[] = [];
+  contas:any [] = [];
 
   constructor(private contasService: ContasService) { }
 

@@ -1,0 +1,21 @@
+<h1>Cadastrar Conta</h1>
+
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <label for="">Agência</label>
+      <input type="text"  class="form-control" formControlName="agencia">
+    </div>
+    <div class="col-12 col-md-4">
+      <label for="">Número</label>
+      <input type="text"  class="form-control" formControlName="numero">
+    </div>
+    <div class="col-12 col-md-4">
+      <label for="">Saldo</label>
+      <input type="text"  class="form-control" formControlName="saldo">
+    </div>
+  </div>
+  <div>
+  </div>
+</form>
+<button type="submit" [disabled]="form.invalid" (click)="save()" class="btn btn-dark mt-3">fodasw</button>

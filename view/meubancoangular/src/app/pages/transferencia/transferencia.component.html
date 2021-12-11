@@ -1,0 +1,29 @@
+<h1 class="mt-2 mb-3 text-secondary ">Aréa de Transferência</h1>
+
+<form [formGroup]="form" (ngSubmit)="transferencia()" >
+  <div class="mb-3">
+    <label class="form-label">Agência Origem</label>
+    <input type="text" class="form-control" formControlName="agenciaOrigem">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Conta Origem</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroContaOrigem">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Agência Destino</label>
+    <input type="text" class="form-control" formControlName="agenciaDestino">
+
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Conta Destino</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroContaDestino">
+  </div>
+  <div class="md-3">
+    <label for="">Valor</label>
+    <input type="text" class="form-control" formControlName="valor">
+    <small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
+      form.get('valor')?.hasError('required')">Campo obrigatório</small>
+  </div>
+  <button type="submit" [disabled]="!form.valid" class="btn btn-dark">Transferir</button>
+</form>
