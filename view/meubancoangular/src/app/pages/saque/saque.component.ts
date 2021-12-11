@@ -1,5 +1,9 @@
+import { ContasService } from './../../services/contas.service';
+import { ISaqueDeposito } from './../../interfaces/saque-deposito';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -9,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaqueComponent implements OnInit {
   form!: FormGroup
-  constructor(private formb:FormBuilder) { }
+  constructor(private formb:FormBuilder, private contaService: ContasService, private router: Router) { }
 
   ngOnInit(): void {
     this.creatForm(); /**creando o formulário */
@@ -17,9 +21,9 @@ export class SaqueComponent implements OnInit {
 
   creatForm(): void { /**preenchendo o formulário */
     this.form = this.formb.group({
-      Agencia: new FormControl(null,[Validators.required, Validators.maxLength(7)]),
-      Conta: new FormControl(null,[Validators.required, Validators.maxLength(7)],),
-      Valor: new FormControl(null,[Validators.required],),
+      agencia: new FormControl('',[Validators.required]),
+      numeroConta: new FormControl('',[Validators.required],),
+      valor: new FormControl('',[Validators.required],),
     })
   }
 
@@ -29,4 +33,24 @@ export class SaqueComponent implements OnInit {
     this.form.reset();
   }
 
-}
+  sacar(){
+    const saque: ISaqueDeposito = this.form.value;
+    console.log(saque);
+    this.contaService.saque(saque).subscribe(contaApi => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Transação realizada!',
+        text: 'Saque efetuado!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.router.navigate(['/contas']);
+    }, error => {
+      console.error(error)
+    });
+
+
+  }
+  }
+
+
