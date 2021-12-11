@@ -34,7 +34,9 @@
         <i *ngIf="!cliente.ativo" class="fas fa-thumbs-down text-danger"></i>
       </td>
       <td>
-        <i class="far fa-edit" style="margin-right: 10px; cursor:pointer"></i>
+        <a [routerLink]="['/cadastrar-clientes/', cliente.id]">
+          <i class="far fa-edit" style="margin-right: 10px; cursor:pointer"></i>
+        </a>
         <i class="fas fa-trash-alt text-danger" (click)="deletar(cliente.id)" style="cursor:pointer"></i>
       </td>
     </tr>

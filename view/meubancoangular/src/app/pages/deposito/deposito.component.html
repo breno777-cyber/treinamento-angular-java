@@ -1,17 +1,17 @@
 <h1>Depósito</h1>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="deposito()">
   <div class="mb-3">
     <label class="form-label">Agência</label>
-    <input type="text" class="form-control"  mask="00000-0" formControlName="Agencia">
+    <input type="text" class="form-control" formControlName="agencia">
   </div>
   <div class="mb-3">
     <label class="form-label">Conta</label>
-    <input type="text" class="form-control"  formControlName="Conta"  mask="00000-0">
+    <input type="text" class="form-control"  formControlName="numeroConta">
   </div>
   <div class="md-3">
     <label for="">Valor</label>
-    <input type="text" class="form-control" formControlName="Valor" currencyMask="">
+    <input type="text" class="form-control" formControlName="valor">
   </div>
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -20,5 +20,5 @@
     </label>
   </div>
 
-  <button type="submit" (click)="onSubmit()" class="btn btn-dark" [disabled]="form.invalid">Enviar</button>
+  <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Depositar</button>
 </form>

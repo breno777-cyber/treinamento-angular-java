@@ -23,10 +23,10 @@
       <td>{{ conta.cliente.nome}}</td>
       <td>{{ conta.agencia}}</td>
       <td>{{ conta.numero}}</td>
-      <td>{{ conta.saldo | currency: 'BRL'}},00</td>
+      <td>{{ conta.saldo | currency: 'BRL'}}</td>
     </tr>
   </tbody>
 
 </table>
-<button type="button" class="btn btn-dark" [disabled]="" routerLink="/cadastrar-clientes" routerLinkActive="active">Cadastrar conta</button>
+<button type="button" class="btn btn-dark" [disabled]="" routerLink="/cadastrar-contas" routerLinkActive="active">Cadastrar conta</button>
 
