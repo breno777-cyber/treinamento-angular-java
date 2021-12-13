@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 export class CadastrarContasComponent implements OnInit {
   form!: FormGroup
   @Input() dataSource!:ICliente;
+  router: any;
 
   constructor(private formb:FormBuilder, private contaService:ContasService, private clienteService:ClienteService, router: Router) { }
 
@@ -45,7 +46,8 @@ export class CadastrarContasComponent implements OnInit {
   }
   save():void {
     this.contaService.save(this.mountPayLoad()).subscribe((res) =>{
-      Swal.fire("Conta cadastrada!", "Conta cadastrada com sucesso!","success")
+      Swal.fire("Conta cadastrada!", "Conta cadastrada com sucesso!","success");
+      this.router.navigate(['/contas']);
   },(error) =>{
     console.log(error)
     })

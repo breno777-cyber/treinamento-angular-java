@@ -3,19 +3,21 @@
 <form [formGroup]="form">
   <div class="row">
     <div class="col-12 col-md-4">
-      <label for="">Agência</label>
+      <label for="">Agência</label><small class="text-danger mb-2" *ngIf="form.get('agencia')?.errors &&
+      form.get('agencia')?.hasError('required')"> *</small>
       <input type="text"  class="form-control" formControlName="agencia">
     </div>
     <div class="col-12 col-md-4">
-      <label for="">Número</label>
+      <label for="">Número</label><small class="text-danger mb-2" *ngIf="form.get('numero')?.errors &&
+      form.get('numero')?.hasError('required')"> *</small>
       <input type="text"  class="form-control" formControlName="numero">
     </div>
     <div class="col-12 col-md-4">
       <label for="">Saldo</label>
-      <input type="text"  class="form-control" formControlName="saldo">
+      <input type="text"  class="form-control" formControlName="saldo" currencyMask>
     </div>
   </div>
   <div>
   </div>
 </form>
-<button type="submit" (click)="save()" class="btn btn-dark mt-3">Cadastrar conta</button>
+<button type="submit" (click)="save()" class="btn btn-secondary mt-3">Cadastrar conta</button>

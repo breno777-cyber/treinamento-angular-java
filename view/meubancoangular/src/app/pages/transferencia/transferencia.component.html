@@ -1,29 +1,37 @@
-<h1 class="mt-2 mb-3 text-secondary ">Aréa de Transferência</h1>
-
-<form [formGroup]="form" (ngSubmit)="transferencia()" >
-  <div class="mb-3">
-    <label class="form-label">Agência Origem</label>
-    <input type="text" class="form-control" formControlName="agenciaOrigem">
+<div class="row" style="align-items: center">
+  <div class="col-5">
+    <h1 class="mt-5 mb-4">Área de Transferência</h1>
   </div>
-  <div class="mb-3">
-    <label class="form-label">Conta Origem</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroContaOrigem">
+</div>
+<form [formGroup]="form" (ngSubmit)="transferencia()">
+  <div class="row">
+    <div class="col col-mt-6">
+      <label class="form-label">Agência Origem</label><small class="text-danger mb-2" *ngIf="form.get('agenciaOrigem')?.errors &&
+      form.get('agenciaOrigem')?.hasError('required')"> *</small>
+      <input type="text" class="form-control" formControlName="agenciaOrigem">
+    </div>
+    <div class="col col-mt-6">
+      <label class="form-label">Agência Destino</label><small class="text-danger mb-2" *ngIf="form.get('agenciaDestino')?.errors &&
+      form.get('agenciaDestino')?.hasError('required')"> *</small>
+      <input type="text" class="form-control" formControlName="agenciaDestino">
+    </div>
   </div>
-
-  <div class="mb-3">
-    <label class="form-label">Agência Destino</label>
-    <input type="text" class="form-control" formControlName="agenciaDestino">
-
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Conta Destino</label>
+  <div class="row">
+    <div class="col col-mt-6">
+      <label class="form-label">Conta Origem</label><small class="text-danger mb-2" *ngIf="form.get('numeroContaOrigem')?.errors &&
+      form.get('numeroContaOrigem')?.hasError('required')"> *</small>
+      <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroContaOrigem">
+    </div>
+  <div class="col col-mt-6">
+    <label class="form-label">Conta Destino</label><small class="text-danger mb-2" *ngIf="form.get('numeroContaDestino')?.errors &&
+    form.get('numeroContaDestino')?.hasError('required')"> *</small>
     <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroContaDestino">
   </div>
+</div>
   <div class="md-3">
-    <label for="">Valor</label>
-    <input type="text" class="form-control" formControlName="valor">
-    <small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
-      form.get('valor')?.hasError('required')">Campo obrigatório</small>
+    <label for="">Valor</label><small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
+    form.get('valor')?.hasError('required')"> *</small>
+    <input type="text" class="form-control" formControlName="valor" currencyMask>
   </div>
-  <button type="submit" [disabled]="!form.valid" class="btn btn-dark">Transferir</button>
+  <button type="submit" [disabled]="!form.valid" class="btn btn-success mt-4">Transferir</button>
 </form>

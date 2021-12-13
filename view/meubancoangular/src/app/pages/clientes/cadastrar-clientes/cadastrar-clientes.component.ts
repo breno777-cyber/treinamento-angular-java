@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
 import Swal from 'sweetalert2'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-clientes',
@@ -15,7 +15,8 @@ export class CadastrarClientesComponent implements OnInit {
   id!: number;
   show: boolean = true;
   $sources!:ICliente
-  constructor(private formb:FormBuilder, private clienteService: ClienteService, private router: ActivatedRoute) {}
+  routers: any;
+  constructor(private formb:FormBuilder, private clienteService: ClienteService, private router: ActivatedRoute, private rout: Router) {}
 
   ngOnInit(): void {
     this.creatForm();
@@ -37,16 +38,22 @@ export class CadastrarClientesComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.clienteService.cadastrar(this.form.getRawValue())
+    this.id ? this.update() : this.adicionar();
+
+  }
+
+  adicionar(): void{
+    this.clienteService.postClient(this.form.getRawValue())
     .subscribe(
       (res) => {
-      alert('Massa');
-      this.form.reset();
+        Swal.fire('Feito!',
+        'Cliente Cadastrado com sucesso!',
+        'success');
+        this.rout.navigate(['/clientes']);
     },
     (error) => {
       alert('Deu merda');
     });
-
   }
 
 
@@ -61,17 +68,34 @@ export class CadastrarClientesComponent implements OnInit {
     })
   }
 
-  enviar(){
-    const cliente: ICliente = this.form.value;
-    console.log(cliente);
-    this.clienteService.cadastrar(cliente).subscribe(clienteAPI => {
-      console.log(cliente);
-      Swal.fire(
-        'Cadastro realizado!',
-        'Cliente cadastrado com sucesso!',
-        'success'
-      );
-    })
+  // enviar(){
+  //   const cliente: ICliente = this.form.value;
+  //   console.log(cliente);
+  //   this.clienteService.cadastrar(cliente).subscribe(clienteAPI => {
+  //     console.log(cliente);
+  //     Swal.fire(
+  //       'Cadastro realizado!',
+  //       'Cliente cadastrado com sucesso!',
+  //       'success'
+  //     );
+  //   })
+  // }
+
+  update(): void{
+    this.clienteService.putClient(this.id, this.form.getRawValue())
+    .subscribe(
+      (res) => {
+        Swal.fire('Sucesso!',
+        'Cliente Cadastrado com sucesso',
+        'success');
+          this.form.reset();
+      this.form.reset();
+    },
+    (error) => {
+      Swal.fire('Erro!',
+      'Revise os seus dados',
+      'error');
+    });
   }
 
 

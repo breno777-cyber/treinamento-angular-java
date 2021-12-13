@@ -1,24 +1,28 @@
-<h1>Depósito</h1>
-
+<div class="row" style="align-items: center">
+  <div class="col-5">
+    <h1 class="mt-5 mb-4">Depósito</h1>
+  </div>
+</div>
 <form [formGroup]="form" (ngSubmit)="deposito()">
-  <div class="mb-3">
-    <label class="form-label">Agência</label>
-    <input type="text" class="form-control" formControlName="agencia">
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Conta</label>
-    <input type="text" class="form-control"  formControlName="numeroConta">
-  </div>
-  <div class="md-3">
-    <label for="">Valor</label>
-    <input type="text" class="form-control" formControlName="valor">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">
-      Aceito os termos de uso.
-    </label>
-  </div>
+  <div class="row">
+    <div class="col col-md-4">
+      <label class="form-label">Agência</label><small class="text-danger mb-2" *ngIf="form.get('agencia')?.errors &&
+      form.get('agencia')?.hasError('required')"> *</small>
+      <input type="text" class="form-control" formControlName="agencia">
 
-  <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Depositar</button>
+    </div>
+    <div class="col col-md-4">
+      <label class="form-label">Conta</label><small class="text-danger mb-2" *ngIf="form.get('numeroConta')?.errors &&
+      form.get('numeroConta')?.hasError('required')"> *</small>
+      <input type="text" class="form-control"  formControlName="numeroConta">
+
+    </div>
+    <div class="col col-md-4">
+      <label class="form-label">Valor</label> <small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
+      form.get('valor')?.hasError('required')"> *</small>
+      <input type="text" class="form-control" formControlName="valor" currencyMask>
+
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success mt-4" [disabled]="form.invalid">Depositar</button>
 </form>
