@@ -32,6 +32,7 @@ export class DepositoComponent implements OnInit {
     this.form.reset();
   }
 
+  //metodo de deposito
   deposito(){
     const deposito : ISaqueDeposito = this.form.value;
     console.log(deposito);

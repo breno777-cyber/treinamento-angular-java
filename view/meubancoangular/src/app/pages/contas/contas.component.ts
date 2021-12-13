@@ -18,6 +18,7 @@ export class ContasComponent implements OnInit {
     this.listarTodasContas();
   }
 
+  //metodo pra listar todas as contas
   listarTodasContas(){
     this.contasService.listarTodasContas().subscribe(contasApi => {
       this.contas = contasApi

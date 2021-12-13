@@ -33,6 +33,8 @@ export class CadastrarContasComponent implements OnInit {
       saldo: new FormControl('', Validators.required),
     })
   }
+
+  //puxa o id do cliente para editar
   mountPayLoad():IConta {
     const data = this.form.value
     console.log(data);
@@ -44,13 +46,15 @@ export class CadastrarContasComponent implements OnInit {
     }
     return payLoad
   }
+
+  //cadastra conta do cliente puxando pelo metodo acima
   save():void {
     this.contaService.save(this.mountPayLoad()).subscribe((res) =>{
       Swal.fire("Conta cadastrada!", "Conta cadastrada com sucesso!","success");
       this.router.navigate(['/contas']);
   },(error) =>{
     console.log(error)
-    })
+    });
   }
 
 

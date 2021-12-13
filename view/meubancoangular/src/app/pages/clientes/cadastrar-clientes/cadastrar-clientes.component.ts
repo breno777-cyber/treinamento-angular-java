@@ -42,6 +42,7 @@ export class CadastrarClientesComponent implements OnInit {
 
   }
 
+  //cadastrando cliente
   adicionar(): void{
     this.clienteService.postClient(this.form.getRawValue())
     .subscribe(
@@ -56,7 +57,7 @@ export class CadastrarClientesComponent implements OnInit {
     });
   }
 
-
+    //puxando o id do cliente
   getById(){
     this.clienteService.getById(this.id).subscribe(
       (res) =>{
@@ -86,7 +87,7 @@ export class CadastrarClientesComponent implements OnInit {
     .subscribe(
       (res) => {
         Swal.fire('Sucesso!',
-        'Cliente Cadastrado com sucesso',
+        'Cliente editado com sucesso',
         'success');
           this.form.reset();
       this.form.reset();
