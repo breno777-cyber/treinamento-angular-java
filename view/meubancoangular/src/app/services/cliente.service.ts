@@ -15,9 +15,9 @@ export class ClienteService {
   listarTodosClientes(){
     return this.http.get<ICliente[]>(this.api);
   }
-  cadastrar(body: ICliente): Observable<any>{
-    return this.http.post<ICliente>(this.api, body)
-  }
+  // cadastrar(body: ICliente): Observable<any>{
+  //   return this.http.post<ICliente>(this.api, body)
+  // }
 
   deleteCliente(id: number) {
     return this.http.delete(`${this.api}/${id}`)
@@ -29,6 +29,14 @@ export class ClienteService {
 
   cadastro(cliente: ICliente): Observable<any>{
     return this.http.post<ICliente>(this.api, cliente);
+  }
+
+  putClient(id: number, body: ICliente){
+    return this.http.put(`${this.api}${id}`, body)
+  }
+
+  postClient(body: ICliente): Observable<any>{
+    return this.http.post(`${this.api}`, body);
   }
 
 }

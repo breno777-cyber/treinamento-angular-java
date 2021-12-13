@@ -30,4 +30,8 @@ export class ContasService {
     return this.http.post<IConta>(`${this.api}transferencia`, transferencia);
   }
 
+  save(dados: IConta):Observable<any>{
+    return this.http.post<IConta>(`${this.api}`, dados);
+  }
+
 }
