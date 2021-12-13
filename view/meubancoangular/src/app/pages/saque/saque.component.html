@@ -2,26 +2,23 @@
   <div class="col-5">
     <h1 class="mt-5 mb-4">Saque</h1>
   </div>
-</div><form [formGroup]="form" (ngSubmit)="sacar()" >
+</div>
+<form [formGroup]="form" (ngSubmit)="sacar()">
   <div class="row">
-
     <div class="col col-md-4">
       <label class="form-label">Agência</label><small class="text-danger mb-2" *ngIf="form.get('agencia')?.errors &&
       form.get('agencia')?.hasError('required')"> *</small>
       <input type="text" class="form-control" formControlName="agencia">
-
     </div>
     <div class="col col-md-4">
       <label class="form-label">Conta</label><small class="text-danger mb-2" *ngIf="form.get('numeroConta')?.errors &&
       form.get('numeroConta')?.hasError('required')"> *</small>
       <input type="text" class="form-control" id="exampleInputEmail1" formControlName="numeroConta">
-
     </div>
     <div class="col col-md-4">
-      <label class="form-label" >Valor</label><small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
+      <label class="form-label">Valor</label><small class="text-danger mb-2" *ngIf="form.get('valor')?.errors &&
       form.get('valor')?.hasError('required')"> *</small>
       <input type="text" class="form-control" formControlName="valor" currencyMask>
-
     </div>
   </div>
   <button type="submit" [disabled]="!form.valid" class="btn btn-success mt-4">Sacar</button>
